@@ -1,0 +1,1096 @@
+/* Basic reset */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5; /* Optional body background */
+    color: #333; /* Default text color */
+}
+
+/* Header styles */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent; /* Transparent initially */
+    color: white;
+    padding: 10px;
+    z-index: 1000;
+    transition: background-color 0.3s ease; /* Smooth background color change */
+}
+
+/* When scrolled, header gets a solid background */
+header.scrolled {
+    background-color: #333; /* Solid background on scroll */
+}
+
+#toggle-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Hidden on larger screens */
+}
+
+/* Navbar styles */
+nav {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease; /* Smooth nav transitions */
+}
+
+.navbar-title {
+    margin-left: 20px;
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Stretch Pro', sans-serif; /* Custom font */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s ease; /* Smooth hover color change */
+}
+
+/* Active link underline effect */
+nav ul li a:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background-color: #00b4d8;
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover:after,
+nav ul li a.active:after {
+    width: 100%;
+}
+
+/* Active link style */
+nav ul li a.active {
+    color: #00b4d8;
+}
+
+/* Section styles */
+section {
+    padding: 220px 20px;
+    text-align: center;
+    scroll-margin-top: 80px;
+}
+
+#home {
+    height: 100vh;
+    background-image: url('../images/kiyan.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideIn 1s forwards;
+}
+
+/* Animation keyframes */
+@keyframes fadeInSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Vignette effect */
+}
+
+#home .content {
+    z-index: 1;
+    text-transform: uppercase;
+    color: white;
+}
+
+/* Styling the name */
+@font-face {
+    font-family: 'Stretch Pro';
+    src: url('../font/StretchPro.otf') format('truetype');
+}
+
+.name {
+    margin-top: 20px;
+    font-family: 'Stretch Pro', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Typing effect styling */
+.typing {
+    font-size: 2rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    border-right: 2px solid white;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+/* Blinking cursor animation */
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: white;
+    }
+}
+.socials{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-icon {
+    font-size: 2rem;
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.student-info {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);    margin-top: 20px;
+    text-align: center;
+}
+
+/* Hover Effect */
+.social-icon:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 180, 216, 0.8);
+}
+/* General Styles */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Start slightly below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+#portfolio {
+    background-color: #121212;
+    color: white;
+    padding: 50px;
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+#portfolio.active {
+    opacity: 1; /* Fade in */
+    animation: fadeIn 0.8s forwards; /* Apply fade-in animation with longer duration */
+}
+
+/* Circular Image Styling */
+.portfolio-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.portfolio-image img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Header and Text Centering */
+.portfolio-header {
+    text-align: center;
+}
+
+.portfolio-header h2 {
+    letter-spacing: 2px;
+}
+
+/* Two-column Layout */
+.portfolio-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.portfolio-column {
+    flex: 1;
+    margin: 0 20px;
+    position: relative;
+}
+
+/* Vertical Line with Circles at Edges */
+.portfolio-column::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;  /* Place the line at the center of the circle */
+    width: 3px;
+    background-color: #001aff;
+}
+
+/* Portfolio Items */
+.portfolio-item {
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 40px;  /* Offset text from the line */
+}
+.profile-heading {
+    margin-bottom: 15px; /* Space below the heading */
+    font-size: 24px; /* Increase font size for prominence */
+    font-weight: bold; /* Make the font bold for emphasis */
+    font-family: 'Stretch Pro', sans-serif;
+    color: #0004ff; /* Dark color for the heading */
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    padding-bottom: 5px; /* Space between the text and underline */
+}
+
+
+/* Centered Circle at the Beginning of the Line */
+.portfolio-item::before {
+    content: "";
+    position: absolute;
+    left: 8px;  /* Align the circle at the center of the line */
+    top: 0px;   /* Place the circle at the start of the portfolio item */
+    width: 15px;
+    height: 15px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Portfolio Item Styles */
+.portfolio-item h3 {
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.portfolio-item ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.portfolio-item ul li {
+    padding: 5px 0;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .portfolio-content {
+        flex-direction: column;
+    }
+
+    .portfolio-column {
+        margin: 20px 0;
+    }
+
+    .portfolio-column::before {
+        left: 10px;
+    }
+
+    .portfolio-item::before {
+        left: 4px;
+    }
+}
+
+
+/* Grid Layout for Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Section background colors */
+ 
+/* Mobile responsive */
+@media (max-width: 1200px) {
+    .name {
+        font-size: 2.5rem;
+    }
+    .typing {
+        font-size: 1.5rem;
+    }
+    nav ul li {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    #toggle-btn {
+        display: block;
+        background: transparent;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    nav {
+        display: block; /* Change to block to allow for transitions */
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        max-height: 0; /* Start with max-height of 0 */
+        overflow: hidden; /* Hide overflow to prevent content from being visible */
+        transition: max-height 0.5s ease; /* Smooth transition for max-height */
+    }
+    nav.active {
+        max-height: 500px; /* Set a max-height large enough to accommodate the nav items */
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+    section {
+        padding: 150px 10px;
+    }
+    .name {
+        font-size: 2rem;
+    }
+    .typing {
+        font-size: 1.25rem;
+    }
+    .social-icon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+    }
+    header #toggle-btn {
+        margin-bottom: 10px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+}
+
+
+/*CONTACT CSS*/
+.contact-heading {
+    font-family: 'Stretch Pro', sans-serif;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    margin-bottom: 15px; /* Space below the heading */
+    font-size: 24px; /* Increase font size for prominence */
+    color: #ffffff; /* Dark color for the heading */
+}
+
+.contact-info {
+    display: flex;
+    align-items: center; /* Aligns the icon and text vertically */
+    margin-bottom: 15px; /* Space between each contact item */
+    font-size: 16px; /* Consistent font size for readability */
+    color: #ffffff; /* Set text color to white */
+}
+
+.contact-info i {
+    margin-right: 10px; /* Space between icon and text */
+    color: #ffffff; /* Change color to match your theme */
+    font-size: 20px; /* Increase icon size for visibility */
+}
+
+/* Style for links */
+.contact-info a {
+    color: #fff; /* Color for links set to white */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.contact-info a:hover {
+    text-decoration: none; /* No underline on hover */
+    color: #fff; /* Keep the link color white on hover */
+}
+/* Skills Section Styling */
+.skills-heading {
+    font-family: 'Stretch Pro', sans-serif;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    margin-bottom: 15px; /* Space below the heading */
+    font-size: 24px; /* Increase font size for prominence */
+    color: rgb(190, 86, 25);
+}
+
+.skills-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.skills-list li {
+    margin-bottom: 20px;
+}
+
+.skill-bar {
+    width: 100%;
+    background-color: #333; /* Background color of the empty bar */
+    border-radius: 20px;
+    overflow: hidden;
+    height: 10px;
+    margin-top: 5px;
+    position: relative;
+}
+
+.skill-level {
+    background-color: #3700ff; /* Green color for the filled part */
+    height: 100%; /* Fill the full height of the bar */
+    width: 0; /* Start with 0 width */
+    transition: width 1s ease; /* Smooth transition for the width */
+    position: relative; /* For positioning the label */
+}
+
+
+/* Social Media Icons */
+
+/* EDUCATION CSS */
+
+.education-heading {
+    font-family: 'Stretch Pro', sans-serif; /* Custom font */
+    color: rgb(21, 221, 138);
+    text-transform: uppercase; /* Transform text to uppercase */
+    margin-bottom: 15px; /* Space below the heading */
+    font-size: 24px; /* Increase font size for prominence */
+}
+
+.portfolio-item p {
+    margin-bottom: 15px; /* Space below each paragraph */
+    line-height: 1.5; /* Increase line height for readability */
+}
+
+.portfolio-item strong {
+    font-weight: bold; /* Make the text bold */
+}
+/*objective*/
+.objective-heading {
+    font-family: 'Stretch Pro', sans-serif;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    margin-bottom: 15px; /* Space below the heading */
+    font-size: 24px; /* Increase font size for prominence */
+    color: #f30000; /* Dark color for the heading */
+}
+.achievement-heading {
+    font-family: 'Stretch Pro', sans-serif;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    margin-bottom: 15px; /* Space below the heading */
+    font-size: 24px; /* Increase font size for prominence */
+    color: rgb(252, 172, 0); /* Dark color for the heading */
+}
+.hobbies-heading {
+    font-family: 'Stretch Pro', sans-serif;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    margin-bottom: 15px; /* Space below the heading */
+    font-size: 24px; /* Increase font size for prominence */
+    color: rgb(0, 255, 34); /* Dark color for the heading */
+}
+/*progrraming*/
+.programming-heading {
+    font-family: 'Stretch Pro', sans-serif;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    margin-bottom: 15px; /* Space below the heading */
+    font-size: 24px; /* Increase font size for prominence */
+    color: rgb(191, 5, 216); /* Dark color for the heading */
+}
+.programming-bar {
+    background-color: #e0e0e0; /* Background color for the bar */
+    border-radius: 10px;
+    overflow: hidden; /* Prevent overflow of inner div */
+    height: 10px; /* Height of the bar */
+    width: 100%; /* Full width */
+    position: relative; /* To position the percentage label */
+}
+
+.programming-level {
+    background-color: #3700ff; /* Green color for the filled part */
+    height: 100%; /* Fill the full height of the bar */
+    width: 0; /* Start with 0 width */
+    transition: width 1s ease; /* Smooth transition for the width */
+    position: relative; /* For positioning the label */
+}
+
+.percentage-label {
+    position: absolute; /* Absolute positioning */
+    right: 10px; /* Positioning from the right */
+    top: 0; /* Align to the top */
+    height: 100%; /* Full height of the bar */
+    display: flex;
+    align-items: center; /* Center vertically */
+    color: #fff; /* Text color */
+    font-size: 10px;
+    font-weight: bold; /* Bold text */
+    padding-right: 5px; /* Right padding */
+}
+/*slider projext*/
+/* Add spacing above the section */
+#projects {
+    padding-top: 20px; /* Additional internal padding */
+    background-image: url('../images/bgif.gif'); /* Set the GIF background */
+    background-size: cover; /* Cover the container */
+    background-position: center; /* Center the background */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+#projects.active {
+    opacity: 1; /* Fade in */
+    animation: fadeIn 0.8s forwards; /* Apply fade-in animation with longer duration */
+}
+.projects-heading {
+    font-family: 'Stretch Pro', sans-serif;
+    margin-top: 50px;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    font-size: 24px; /* Increase font size for prominence */
+    color: #ffffff; /* Dark color for the heading */
+}
+.projects-description {
+    font-size: 1.2em;
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20PX;
+    color: #ffffff; /* Subtle gray color */
+}
+.slider {
+    position: relative;
+    overflow: hidden; /* Hide overflowing slides */
+    width: 100%;
+    margin: auto;
+    max-width: 800px; /* Adjust the slider width */
+}
+
+.slides {
+    display: flex; /* Flexbox layout for slides */
+    transition: transform 0.5s ease-in-out; /* Smooth slide transition */
+}
+
+.slide {
+    min-width: 100%; /* Each slide takes up full width */
+    box-sizing: border-box;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center align items */
+    justify-content: center; /* Vertically center content */
+    width: 100%; /* Make container full width */
+    max-width: 600px; /* Limit max width */
+    height: 500px; /* Fixed height for all containers */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to each container */
+    border-radius: 10px;
+    background-color: #fff; /* White background for contrast */
+    margin: auto; /* Center the container */
+    margin-top: 50px;
+}
+
+.image-container img {
+    width: 100%;
+    max-height: 300px; /* Fixed height for images */
+    object-fit: contain; /* Ensure the image fits without being cropped */
+    border-radius: 10px;
+    margin-bottom: 10px; /* Space below the image */
+}
+.project-wrapper {
+    text-align: center; /* Center align text */
+    max-width: 600px;
+}
+
+.project-name {
+    font-family: 'Stretch Pro', sans-serif;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    margin-bottom: 15px; /* Space below the heading */
+    font-size: 24px; /* Increase font size for prominence */
+    color: rgb(0, 22, 216);
+}
+
+.project-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    color: rgb(0, 0, 0);
+    margin: auto;
+}
+
+/* Slider navigation buttons */
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7); /* Light background for buttons */
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 2em;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
+button.prev:hover, button.next:hover {
+    background-color: rgba(255, 255, 255, 1); /* Darker on hover */
+}
+
+/* Smooth transition for the slider */
+.slides {
+    transition: transform 0.5s ease-in-out;
+}
+/*CONTACT */
+
+#contact {
+    padding: 40px;
+    text-align: center;
+    background-image: url('../images/particles.gif'); /* Replace with the path to your image */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+
+.contact-headings {
+    font-family: 'Stretch Pro', sans-serif;
+    margin-top: 20px;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    font-size: 30px; /* Increase font size for prominence */
+    color: #000000; /* Dark color for the heading */
+}
+
+.contact-description {
+    font-size: 1.2em; /* Adjust size as needed */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #555; /* Slightly lighter color */
+}
+
+.social-icons {
+    text-align: center; /* Center align icons */
+}
+
+.social-icons a {
+    margin: 0 10px; /* Space between icons */
+    font-size: 1.5em; /* Icon size */
+    color: #ffffff; /* Icon color */
+    transition: color 0.3s; /* Smooth transition on hover */
+    display: inline-flex; /* Use flexbox to center the icon */
+    justify-content: center; /* Center the icon */
+    align-items: center; /* Center the icon vertically */
+    width: 50px; /* Set width for circular appearance */
+    height: 50px; /* Set height for circular appearance */
+    border-radius: 50%; /* Make the border circular */
+    background-color: #000000; /* Background color for icons */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.social-icons a:hover {
+    color: #007bff; /* Change color on hover */
+    background-color: #e0e0e0; /* Change background on hover */
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items at the start of the container */
+    margin-bottom: 20px;
+}
+
+.form-container {
+    width: 45%; /* Adjust width as needed */
+    background: #ffffff; /* White background for form */
+    border: 1px solid #ddd; /* Light border for definition */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px; /* Space between form groups */
+}
+
+.contact-form label {
+    
+    display: block; /* Keep label as a block element */
+    margin-bottom: 5px; /* Space below the label */
+    font-weight: bold; /* Bold text for emphasis */
+    color: #333; /* Darker color for labels */
+    text-align: left; /* Left-align the labels */
+    font-size: 1em; /* Font size for consistency */
+    padding: 0 5px; /* Optional padding for better spacing */
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%; /* Full width for input fields */
+    padding: 12px; /* Increased padding for better touch targets */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s; /* Smooth transition on focus */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.contact-form button {
+    padding: 12px 20px;
+    background-color: #000000; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    width:100px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em; /* Font size for button */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.contact-form button:hover {
+    background-color: #555555; /* Darker shade for hover effect */
+}
+
+.map-container {
+    width: 55%; /* Adjust width as needed */
+    max-width: 600px; /* Limit the width of the map */
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    margin-top: 20px; /* Space above the map */
+}
+
+.map-container h3 {
+    margin: 0 0 10px; /* Space below heading */
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .contact-headings {
+        font-size: 1.8em; /* Smaller heading for mobile */
+    }
+
+    .contact-description {
+        font-size: 1em; /* Smaller description for mobile */
+    }
+
+    .contact-container {
+        flex-direction: column; /* Stack form and map on small screens */
+        align-items: center; /* Center align items */
+    }
+
+    .form-container {
+        width: 90%; /* Full width for mobile */
+        margin-bottom: 20px; /* Space below form on mobile */
+    }
+
+    .map-container {
+        width: 90%; /* Full width for mobile */
+    }
+
+    .social-icons a {
+        font-size: 1.2em; /* Smaller icon size for mobile */
+    }
+}
+#footer {
+    padding: 30px; /* Increased padding for more space around footer */
+    text-align: center; /* Center text */
+    background-color: #333; /* Dark background for footer */
+    color: #fff; /* Light text color */
+}
+
+.footer-container {
+    max-width: 1200px; /* Limit the width of footer */
+    margin: 0 auto; /* Center footer content */
+}
+
+.social-links {
+    margin-bottom: 15px; /* Space below social links */
+}
+
+.footer-icon {
+    font-size: 24px; /* Size of social icons */
+    margin: 0 15px; /* Increased space between icons */
+    color: #fff; /* Icon color */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.footer-icon:hover {
+    color: #f39c12; /* Change color on hover */
+}
+
+.footer-text {
+    font-size: 14px; /* Size of footer text */
+    margin: 5px 0; /* Margin above and below the footer text */
+}
+
+.designer-text {
+    font-size: 15px; /* Size for designer text */
+    margin: 5px 0; /* Margin above and below designer text */
+    color: #0074e7; /* Change color for visibility */
+    font-weight: bold; /* Bold font for designer text */
+}
+
+#footer a {
+    text-decoration: none; /* Remove underline from links */
+    outline: none; /* Remove outline on focus */
+}
+/*friends */
+#friends {
+    padding: 40px;
+    text-align: center;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+#friends.active {
+    opacity: 1; /* Fade in */
+    animation: fadeIn 0.8s forwards; /* Apply fade-in animation with longer duration */
+}
+.friends-heading {
+    font-family: 'Stretch Pro', sans-serif;
+    margin-top: 20px;
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    font-size: 30px; /* Increase font size for prominence */
+    color: #000000; /* Dark color for the heading */
+}
+
+.friends-description {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.2em; /* Adjust as needed */
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 1.5em; /* Space between items */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr; /* Change to one column for mobile */
+    }
+}
+
+.gallery-item {
+    margin: 0 10px; /* Adds margin to each side of the gallery item */
+    overflow: hidden; /* Optional, to contain the images */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Slightly enlarges the image on hover */
+}
+
+.gallery-image {
+    width: 100%; /* Makes the image fill the container */
+    height: 200px; /* Fixed height for uniformity */
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    border-radius: 8px; /* Optional: adds rounded corners to the images */
+}
+/*family*/
+#family {
+    padding: 40px;
+    text-align: center;
+    background-image: url('../images/particles.gif'); /* Set the GIF background */
+    background-size: cover; /* Make the background cover the entire section */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+#family.active {
+    opacity: 1; /* Fade in */
+    animation: fadeIn 0.8s forwards; /* Apply fade-in animation with longer duration */
+}
+.family-heading {
+    font-family: 'Stretch Pro', sans-serif;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 2em; /* Responsive font size */
+    color: #000000; /* Dark color for the heading */
+}
+
+.family-desc {
+    margin-top: 20px;
+    margin-bottom: 40px; /* Added more space below the description */
+    font-size: 1.2em; /* Adjust as needed */
+    color: #000000; /* Ensured visibility against background */
+}
+
+.tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.tree-parent, .tree-children {
+    display: flex;
+    justify-content: center; /* Centers parents and children */
+    gap: 200px; /* Moderate space between images */
+    margin-bottom: 60px; /* Space between parent and children sections */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.parent-node, .child-node {
+    text-align: center;
+}
+
+.parent-node p, 
+.child-node p {
+    font-size: 1.1em; /* Font size for names */
+    margin-top: 10px; /* Margin above the names */
+    color: #000000; /* Darker color for better visibility */
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+.family-photo {
+    width: 220px; /* Increased size of photos for better visibility */
+    height: 220px;
+    border-radius: 50%;
+    border: 4px solid #000000; /* Add border around images */
+    margin-bottom: 10px;
+    transition: transform 0.3s, box-shadow 0.3s; /* For smooth hover effects */
+}
+
+.family-photo:hover {
+    transform: scale(1.1); /* Enlarges the image on hover */
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2); /* Adds shadow on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .family-heading {
+        font-size: 1.8em; /* Adjust font size for smaller screens */
+    }
+
+    .family-desc {
+        font-size: 1.1em; /* Smaller description font size */
+    }
+
+    .tree-parent, .tree-children {
+        gap: 30px; /* Reduce gap between images */
+        margin-bottom: 40px; /* Less space between parent and children */
+    }
+
+    .family-photo {
+        width: 180px; /* Smaller images on smaller screens */
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .family-heading {
+        font-size: 1.5em; /* Further reduce heading size */
+    }
+
+    .family-desc {
+        font-size: 1em; /* Further reduce description font size */
+    }
+
+    .tree-parent, .tree-children {
+        flex-direction: column; /* Stack images vertically */
+        gap: 20px; /* Further reduce gap */
+    }
+
+    .family-photo {
+        width: 150px; /* Even smaller images on very small screens */
+        height: 150px;
+    }
+}
